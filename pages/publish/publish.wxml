@@ -1,0 +1,141 @@
+<!-- 发布页 -->
+<view class="page-publish">
+  <view class="form-container">
+    <!-- 商品图片 -->
+    <view class="form-item">
+      <view class="form-label">商品图片 <text class="required">*</text></view>
+      <view class="image-picker">
+        <view class="image-list">
+          <view class="image-item" wx:for="{{images}}" wx:key="*this" wx:for-item="img">
+            <image class="preview-image" src="{{img}}" mode="aspectFill" />
+            <view class="image-remove" bindtap="removeImage" data-index="{{index}}">✕</view>
+          </view>
+          <view class="image-add" bindtap="chooseImage" wx:if="{{images.length < 9}}">
+            <text class="add-icon">+</text>
+            <text class="add-text">添加图片</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 商品名称 -->
+    <view class="form-item">
+      <view class="form-label">商品名称 <text class="required">*</text></view>
+      <input
+        class="form-input"
+        type="text"
+        placeholder="请输入商品名称"
+        value="{{form.title}}"
+        bindinput="onInputChange"
+        data-field="title"
+        maxlength="50"
+      />
+    </view>
+
+    <!-- 商品类别 -->
+    <view class="form-item">
+      <view class="form-label">商品类别 <text class="required">*</text></view>
+      <picker bindchange="onCategoryChange" value="{{categoryIndex}}" range="{{categoryNames}}">
+        <view class="form-picker {{form.category ? '' : 'placeholder'}}">
+          {{form.category ? categoryNames[categoryIndex] : '请选择商品类别'}}
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 价格 -->
+    <view class="form-item">
+      <view class="form-label">转让价格 <text class="required">*</text></view>
+      <view class="price-input-wrapper">
+        <text class="price-symbol">¥</text>
+        <input
+          class="form-input price-input"
+          type="digit"
+          placeholder="请输入价格"
+          value="{{form.price}}"
+          bindinput="onInputChange"
+          data-field="price"
+        />
+      </view>
+    </view>
+
+    <!-- 原价 -->
+    <view class="form-item">
+      <view class="form-label">原价（选填）</view>
+      <view class="price-input-wrapper">
+        <text class="price-symbol">¥</text>
+        <input
+          class="form-input price-input"
+          type="digit"
+          placeholder="请输入原价"
+          value="{{form.originalPrice}}"
+          bindinput="onInputChange"
+          data-field="originalPrice"
+        />
+      </view>
+    </view>
+
+    <!-- 成色 -->
+    <view class="form-item">
+      <view class="form-label">商品成色 <text class="required">*</text></view>
+      <picker bindchange="onConditionChange" value="{{conditionIndex}}" range="{{conditions}}">
+        <view class="form-picker {{form.condition ? '' : 'placeholder'}}">
+          {{form.condition || '请选择商品成色'}}
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 交易地点 -->
+    <view class="form-item">
+      <view class="form-label">交易地点 <text class="required">*</text></view>
+      <input
+        class="form-input"
+        type="text"
+        placeholder="请输入交易地点，如：图书馆门口"
+        value="{{form.location}}"
+        bindinput="onInputChange"
+        data-field="location"
+      />
+    </view>
+
+    <!-- 联系方式 -->
+    <view class="form-item">
+      <view class="form-label">联系方式 <text class="required">*</text></view>
+      <input
+        class="form-input"
+        type="text"
+        placeholder="请输入联系方式，如：微信：xxx"
+        value="{{form.contact}}"
+        bindinput="onInputChange"
+        data-field="contact"
+      />
+    </view>
+
+    <!-- 商品描述 -->
+    <view class="form-item">
+      <view class="form-label">商品描述 <text class="required">*</text></view>
+      <textarea
+        class="form-textarea"
+        placeholder="请详细描述商品情况，如使用情况、瑕疵等"
+        value="{{form.description}}"
+        bindinput="onInputChange"
+        data-field="description"
+        maxlength="500"
+      />
+      <view class="textarea-count">{{form.description.length || 0}}/500</view>
+    </view>
+
+    <!-- 提示信息 -->
+    <view class="tips">
+      <text>💡 提示：发布成功后商品将展示在首页列表中</text>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-section">
+    <button class="submit-btn {{isFormValid ? '' : 'disabled'}}" bindtap="onSubmit" loading="{{submitting}}">
+      {{submitting ? '发布中...' : '发布商品'}}
+    </button>
+  </view>
+</view>

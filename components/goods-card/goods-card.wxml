@@ -1,0 +1,22 @@
+<!-- 商品卡片组件 -->
+<view class="goods-card" bindtap="onTap">
+  <image class="goods-image" src="{{image}}" mode="aspectFill" lazy-load binderror="onImageError" wx:if="!imageError" />
+  <view class="goods-image-placeholder" wx:if="{{imageError}}">
+    <text>📷</text>
+  </view>
+  <view class="goods-info">
+    <text class="goods-title ellipsis-2">{{title}}</text>
+    <view class="goods-tags" wx:if="{{showTags}}">
+      <text class="tag">{{condition}}</text>
+      <text class="tag tag-secondary">{{categoryName}}</text>
+    </view>
+    <view class="goods-price-row">
+      <text class="price">{{price}}</text>
+      <text class="original-price" wx:if="{{originalPrice && originalPrice != price}}">{{originalPrice}}</text>
+    </view>
+    <view class="goods-meta" wx:if="{{showMeta}}">
+      <text class="goods-location">📍 {{location}}</text>
+      <text class="goods-time">{{publishTime}}</text>
+    </view>
+  </view>
+</view>

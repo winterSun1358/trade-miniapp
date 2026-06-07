@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "goods-card": "/components/goods-card/goods-card",
+    "search-bar": "/components/search-bar/search-bar"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

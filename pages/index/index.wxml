@@ -1,0 +1,88 @@
+<!-- 首页 -->
+<view class="page-home">
+  <!-- 搜索栏 -->
+  <search-bar
+    value="{{searchKeyword}}"
+    placeholder="搜索商品名称..."
+    bindinput="onSearchInput"
+    bindsearch="onSearch"
+    bindclear="onSearchClear"
+  />
+
+  <!-- 轮播图 -->
+  <swiper class="banner-swiper" indicator-dots autoplay circular interval="3000" bindchange="onBannerChange">
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <view class="banner-wrap" bindtap="onBannerTap" data-category="{{item.category}}">
+        <image class="banner-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="banner-title">{{item.title}}</view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 分类入口 -->
+  <view class="category-section card">
+    <view class="category-list">
+      <view
+        class="category-item {{currentCategory === item.id ? 'active' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="id"
+        bindtap="onCategoryTap"
+        data-id="{{item.id}}"
+      >
+        <view class="category-icon">{{item.id === 'all' ? '📦' : (item.id === 'book' ? '📚' : (item.id === 'digital' ? '💻' : (item.id === 'life' ? '🏠' : (item.id === 'sport' ? '⚽' : '🎁'))))}}</view>
+        <text class="category-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <view class="filter-item {{sortType === 'default' ? 'active' : ''}}" bindtap="onSortChange" data-type="default">综合</view>
+    <view class="filter-item {{sortType === 'price_asc' ? 'active' : ''}}" bindtap="onSortChange" data-type="price_asc">价格↑</view>
+    <view class="filter-item {{sortType === 'price_desc' ? 'active' : ''}}" bindtap="onSortChange" data-type="price_desc">价格↓</view>
+    <view class="filter-item {{sortType === 'time' ? 'active' : ''}}" bindtap="onSortChange" data-type="time">最新</view>
+  </view>
+
+  <!-- 商品列表 -->
+  <scroll-view
+    class="goods-list"
+    scroll-y
+    refresher-enabled
+    refresher-triggered="{{isRefreshing}}"
+    bindrefresherrefresh="onPullDownRefresh"
+    bindscrolltolower="onReachBottom"
+  >
+    <view class="goods-inner">
+      <view class="goods-grid">
+        <goods-card
+          wx:for="{{goodsList}}"
+          wx:key="id"
+          id="{{item.id}}"
+          image="{{item.images[0]}}"
+          title="{{item.title}}"
+          price="{{item.price}}"
+          originalPrice="{{item.originalPrice}}"
+          condition="{{item.condition}}"
+          categoryName="{{item.categoryName}}"
+          location="{{item.location}}"
+          publishTime="{{item.publishTime}}"
+          showMeta="{{true}}"
+          data-id="{{item.id}}"
+          bind:cardtap="goToDetail"
+        />
+      </view>
+
+      <!-- 加载更多 -->
+      <view class="load-more" wx:if="{{goodsList.length > 0}}">
+        <text wx:if="{{hasMore}}">加载中...</text>
+        <text wx:else>已经到底啦~</text>
+      </view>
+
+      <!-- 空状态 -->
+      <view class="empty-state" wx:if="{{goodsList.length === 0}}">
+        <text>😕</text>
+        <text>暂无相关商品</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,266 @@
+/** 我的页面样式 **/
+.page-profile {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* 用户信息 */
+.user-section {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+  padding: 60rpx 40rpx 80rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+  margin-right: 24rpx;
+}
+
+.avatar-wrap {
+  position: relative;
+  margin-right: 24rpx;
+}
+
+.avatar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.avatar-wrap:active .avatar-overlay {
+  opacity: 1;
+}
+
+.avatar-edit-icon {
+  font-size: 40rpx;
+}
+
+.edit-hint {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10rpx;
+}
+
+.user-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 8rpx;
+}
+
+.user-id {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 数据统计 */
+.stats-section {
+  display: flex;
+  justify-content: space-around;
+  margin: -40rpx 20rpx 20rpx;
+  padding: 30rpx 0;
+  position: relative;
+  z-index: 1;
+}
+
+.stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rpx 20rpx;
+}
+
+.stats-num {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 8rpx;
+}
+
+.stats-label {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+/* 内容区域 */
+.content-section {
+  margin: 0 20rpx;
+  background: var(--bg-white);
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+/* Tab 栏 */
+.tab-bar {
+  display: flex;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  position: relative;
+}
+
+.tab-item.active {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 4rpx;
+  background: var(--primary);
+  border-radius: 2rpx;
+}
+
+/* 商品列表 */
+.goods-scroll {
+  max-height: 600rpx;
+}
+
+.goods-list {
+  padding: 20rpx;
+}
+
+.goods-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: var(--bg);
+  border-radius: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.goods-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.goods-image {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 12rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.goods-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.goods-title {
+  font-size: 28rpx;
+  color: var(--text);
+  margin-bottom: 12rpx;
+  display: block;
+}
+
+.goods-tags {
+  margin-bottom: 12rpx;
+}
+
+.goods-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.goods-status {
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+}
+
+.goods-status.on-sale {
+  background: rgba(255, 107, 107, 0.1);
+  color: var(--primary);
+}
+
+.goods-status.sold {
+  background: #f0f0f0;
+  color: var(--text-light);
+}
+
+/* 操作按钮 */
+.goods-actions {
+  margin-left: 16rpx;
+}
+
+.action-btn {
+  padding: 12rpx 24rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  color: var(--primary);
+  background: rgba(255, 107, 107, 0.1);
+  white-space: nowrap;
+}
+
+.action-btn:active {
+  background: rgba(255, 107, 107, 0.2);
+}
+
+/* 空状态 */
+.empty-state {
+  padding: 80rpx 40rpx;
+}
+
+.empty-state text:first-child {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+/* 清除缓存 */
+.clear-section {
+  padding: 40rpx;
+}
+
+.clear-btn {
+  text-align: center;
+  padding: 24rpx;
+  background: var(--bg-white);
+  border-radius: 16rpx;
+  color: var(--text-light);
+  font-size: 28rpx;
+}
+
+.clear-btn:active {
+  background: #ffe0e0;
+  color: var(--primary);
+}

@@ -1,0 +1,17 @@
+<!-- 搜索栏组件 -->
+<view class="search-bar {{isFixed ? 'fixed' : ''}}">
+  <view class="search-wrapper">
+    <text class="search-icon">🔍</text>
+    <input
+      class="search-input"
+      type="text"
+      placeholder="{{placeholder}}"
+      value="{{value}}"
+      bindinput="onInput"
+      bindconfirm="onSearch"
+      confirm-type="search"
+    />
+    <text class="clear-btn" wx:if="{{value && showClear}}" bindtap="onClear">✕</text>
+  </view>
+  <text class="cancel-btn" wx:if="{{showCancel}}" bindtap="onCancel">取消</text>
+</view>

@@ -1,0 +1,192 @@
+/** 商品详情页样式 **/
+.page-detail {
+  padding-bottom: 120rpx;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* 图片轮播 */
+.goods-swiper {
+  height: 500rpx;
+}
+
+.goods-swiper-image {
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+  pointer-events: none;
+}
+
+.swiper-item-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.swiper-image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  color: #999;
+  font-size: 26rpx;
+}
+
+/* 信息区域 */
+.info-section {
+  margin: 20rpx;
+  padding: 24rpx;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.price {
+  font-size: 48rpx;
+}
+
+.status-tag {
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+}
+
+.status-tag.on-sale {
+  background: rgba(255, 107, 107, 0.1);
+  color: var(--primary);
+}
+
+.status-tag.sold {
+  background: #f0f0f0;
+  color: var(--text-light);
+}
+
+.goods-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text);
+  line-height: 1.5;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.goods-tags {
+  display: flex;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.meta-list {
+  border-top: 1rpx solid var(--border);
+  padding-top: 20rpx;
+}
+
+.meta-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12rpx 0;
+  font-size: 28rpx;
+}
+
+.meta-label {
+  color: var(--text-secondary);
+}
+
+.meta-value {
+  color: var(--text);
+}
+
+/* 描述区域 */
+.desc-section,
+.contact-section {
+  margin: 0 20rpx 20rpx;
+  padding: 24rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: 16rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.desc-content {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* 联系方式 */
+.contact-item {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.contact-label {
+  color: var(--text-secondary);
+}
+
+.contact-value {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  background: var(--bg-white);
+  border-top: 1rpx solid var(--border);
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24rpx;
+}
+
+.action-icon {
+  font-size: 40rpx;
+  margin-bottom: 4rpx;
+}
+
+.action-text {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+}
+
+.contact-btn {
+  flex: 1;
+  margin-left: 24rpx;
+  padding: 24rpx 0;
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.contact-btn:active {
+  background: var(--primary-dark);
+}
